@@ -45,13 +45,13 @@ try {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'andrixngoyi243@gmail.com';         // Adresse Gmail
-    $mail->Password = 'vrkp ywzv sasq mnap';              // Mot de passe d'application Gmail
+    $mail->Username = 'User@exemple.com';         // Adresse Gmail
+    $mail->Password = 'xxx xxxx xxxxx';              // Mot de passe d'application Gmail
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port = 587;
 
     // Paramètres de l'email
-    $mail->setFrom('andrixngoyi243@gmail.com', 'Portfolio');
+    $mail->setFrom('User@exemple.com', 'Portfolio');
     $mail->addReplyTo($email, $name);
     $mail->addAddress('andrixngoyi243@gmail.com');        // Destinataire final
 
