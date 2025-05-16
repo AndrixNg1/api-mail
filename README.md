@@ -3,11 +3,6 @@
 ````markdown
 # 📨 API Mail – Formulaire de Contact en PHP
 
-[![Licence MIT](https://img.shields.io/github/license/AndrixNg1/api-mail)](LICENSE)
-[![Stars](https://img.shields.io/github/stars/AndrixNg1/api-mail?style=social)](https://github.com/AndrixNg1/api-mail/stargazers)
-[![Issues](https://img.shields.io/github/issues/AndrixNg1/api-mail)](https://github.com/AndrixNg1/api-mail/issues)
-[![Dernier commit](https://img.shields.io/github/last-commit/AndrixNg1/api-mail)](https://github.com/AndrixNg1/api-mail/commits/main)
-
 Une API simple et sécurisée en PHP utilisant **PHPMailer** pour envoyer des emails depuis un formulaire de contact. Idéal pour les portfolios, sites vitrines ou tout projet statique souhaitant une solution d'envoi d'email sans backend complexe.
 
 ---
