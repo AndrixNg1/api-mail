@@ -1,31 +1,130 @@
-# API Contact - Projet PHP
+### ✅ Ton `README.md` amélioré avec badges
 
-## Description
+````markdown
+# 📨 API Mail – Formulaire de Contact en PHP
 
-Cette API PHP permet à un utilisateur d'envoyer un message de contact via un formulaire. Elle utilise **PHPMailer** pour envoyer l'email au destinataire spécifié (par exemple, l'administrateur ou une adresse pré-configurée). Les utilisateurs doivent envoyer une requête POST avec des données JSON, et l'API enverra l'email avec les informations fournies.
+[![Licence MIT](https://img.shields.io/github/license/AndrixNg1/api-mail)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/AndrixNg1/api-mail?style=social)](https://github.com/AndrixNg1/api-mail/stargazers)
+[![Issues](https://img.shields.io/github/issues/AndrixNg1/api-mail)](https://github.com/AndrixNg1/api-mail/issues)
+[![Dernier commit](https://img.shields.io/github/last-commit/AndrixNg1/api-mail)](https://github.com/AndrixNg1/api-mail/commits/main)
 
-## Fonctionnalités
+Une API simple et sécurisée en PHP utilisant **PHPMailer** pour envoyer des emails depuis un formulaire de contact. Idéal pour les portfolios, sites vitrines ou tout projet statique souhaitant une solution d'envoi d'email sans backend complexe.
 
-- Envoi d'un email contenant les informations du contact (nom, email, sujet, message).
-- Utilisation de **PHPMailer** pour l'envoi sécurisé d'emails via SMTP (exemple avec Gmail).
-- Validation des champs nécessaires (nom, email, sujet, message).
-- Réponse API sous forme JSON pour indiquer le succès ou l'échec de la demande.
+---
 
-## Prérequis
+## 🚀 Fonctionnalités
 
-Avant d'exécuter l'API, vous devez avoir les éléments suivants :
+- ✅ Envoi d’emails via SMTP (Gmail, OVH, etc.)
+- ✅ Sécurité renforcée (validation, sanitation, .env)
+- ✅ Support des requêtes CORS
+- ✅ Interface HTML de test incluse
 
-- PHP 7.0+ installé sur votre serveur.
-- Composer pour la gestion des dépendances (PHPMailer).
-- Un serveur SMTP configuré (ex: Gmail) pour l'envoi d'emails.
-- Un dépôt GitHub ou un environnement de déploiement comme **Railway** ou un serveur local.
+---
 
-## Installation
+## 📦 Installation
 
 ### 1. Cloner le projet
 
-Clonez ce dépôt dans un dossier sur votre serveur ou votre machine locale :
+```bash
+git clone https://github.com/AndrixNg1/api-mail.git
+cd api-mail
+````
+
+### 2. Installer les dépendances PHP
+
+Assurez-vous d’avoir [Composer](https://getcomposer.org/) installé :
 
 ```bash
-git clone https://github.com/ton_utilisateur/ton_projet.git
-cd ton_projet
+composer install
+```
+
+### 3. Créer le fichier `.env`
+
+Crée un fichier `.env` à la racine avec le contenu suivant :
+
+```env
+SMTP_HOST=smtp.gmail.com
+SMTP_USER=ton.email@gmail.com
+SMTP_PASS=ton_mot_de_passe_application
+SMTP_PORT=587
+MAIL_TO=adresse.reception@gmail.com
+```
+
+> 🔐 Utilise un mot de passe d’application Gmail (ne jamais utiliser ton mot de passe principal).
+
+---
+
+## 🧪 Interface de test
+
+Tu peux tester l’envoi de mail avec le fichier `test.html` fourni.
+
+### Étapes :
+
+1. Lance un serveur local :
+
+```bash
+php -S localhost:8000
+```
+
+2. Ouvre [http://localhost:8000/test.html](http://localhost:8000/test.html) dans ton navigateur.
+3. Remplis le formulaire et clique sur **Envoyer**.
+
+---
+
+## 📡 Requête API
+
+### ➤ Endpoint
+
+```
+POST /contact.php
+```
+
+### ➤ Corps de la requête (JSON)
+
+```json
+{
+  "name": "Jean Dupont",
+  "email": "jean@example.com",
+  "subject": "Demande de devis",
+  "message": "Bonjour, j'aimerais un devis pour votre service."
+}
+```
+
+### ➤ Réponse (succès)
+
+```json
+{
+  "success": true,
+  "message": "Email envoyé avec succès."
+}
+```
+
+---
+
+## ✅ Sécurité
+
+* ✔ Champs requis validés (`filter_var`, `htmlspecialchars`)
+* ✔ Infos sensibles protégées avec `.env`
+* ✔ En-têtes CORS configurés uniquement pour des domaines spécifiques
+* ✔ Logs d’erreurs serveur (pas d’erreurs sensibles affichées au client)
+
+---
+
+## 🙋‍♂️ Contribution
+
+Tu peux proposer des améliorations ou signaler un bug :
+
+* Crée une [Issue](https://github.com/AndrixNg1/api-mail/issues)
+* Ou propose une Pull Request
+
+---
+
+## 📄 Licence
+
+Ce projet est sous licence **MIT** — libre à l’usage personnel et commercial.
+
+---
+
+**Développé avec ❤️ par [AndrixNg1](https://github.com/AndrixNg1)**
+
+```

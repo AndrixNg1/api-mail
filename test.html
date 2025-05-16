@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire de Contact - Test API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        label, input, textarea, button {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        input, textarea {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+        }
+        button {
+            background-color: #0a74da;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #095ab3;
+        }
+        .message {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Tester l'envoi de message</h2>
+
+    <form id="contactForm">
+        <label for="name">Nom :</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="subject">Sujet :</label>
+        <input type="text" id="subject" name="subject" required>
+
+        <label for="message">Message :</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Envoyer</button>
+    </form>
+
+    <div class="message" id="responseMessage"></div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const form = e.target;
+            const data = {
+                name: form.name.value.trim(),
+                email: form.email.value.trim(),
+                subject: form.subject.value.trim(),
+                message: form.message.value.trim()
+            };
+
+            try {
+                const response = await fetch('contact.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+                const msgDiv = document.getElementById('responseMessage');
+
+                if (response.ok) {
+                    msgDiv.style.color = 'green';
+                    msgDiv.textContent = result.message;
+                    form.reset();
+                } else {
+                    msgDiv.style.color = 'red';
+                    msgDiv.textContent = result.error || 'Une erreur est survenue.';
+                }
+
+            } catch (error) {
+                document.getElementById('responseMessage').textContent = 'Erreur réseau ou serveur.';
+                document.getElementById('responseMessage').style.color = 'red';
+            }
+        });
+    </script>
+
+</body>
+</html>
